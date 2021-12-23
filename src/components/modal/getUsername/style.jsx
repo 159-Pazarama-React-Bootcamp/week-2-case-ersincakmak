@@ -14,11 +14,13 @@ const input = styled.input`
   border-color: ${(props) =>
     props.error ? 'rgb(255, 50, 60)' : 'rgb(145, 145, 145)'};
   border-radius: 5px;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.textRegular};
 
   &:focus,
   &:active {
     border-color: ${(props) =>
-      props.error ? 'rgb(255, 50, 60)' : 'rgb(0,0,0)'};
+      props.error ? 'rgb(255, 50, 60)' : props.theme.colors.textRegular};
   }
 `
 const inputError = styled.p`
@@ -34,10 +36,11 @@ const modalContainer = styled.div`
   inset: 0;
   background-color: transparent;
   z-index: 999999;
+  background-color: ${(props) => props.theme.colors.bgRegular};
 `
 
 const modal = styled(motion.form)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bgModal};
   border-radius: 5px;
   padding: 1em;
   display: flex;
@@ -47,6 +50,7 @@ const modal = styled(motion.form)`
   width: min(350px, 100%);
   margin-inline: auto;
   margin-top: 2em;
+  color: ${(props) => props.theme.colors.textRegular};
 `
 
 const modalTitle = styled.h3`
@@ -56,13 +60,13 @@ const modalButton = styled.button`
   padding: 0.55em 0.75em;
   font-size: 0.875rem;
   border-radius: 5px;
-  background-color: rgb(152, 231, 146);
+  background-color: ${(props) => props.theme.colors.primary};
   align-self: flex-end;
   transition: all 0.2s ease;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(141, 255, 133);
+    background-color: ${(props) => props.theme.colors.primaryHover};
   }
 `
 
