@@ -4,7 +4,7 @@ import React from 'react'
 import * as Yup from 'yup'
 import s from './style'
 
-const GetUsername = ({ isActive, setUserName, setIsActive }) => {
+const GetUsername = ({ isActive, setUserName }) => {
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -16,7 +16,6 @@ const GetUsername = ({ isActive, setUserName, setIsActive }) => {
     }),
     onSubmit: (values) => {
       setUserName(values.username)
-      setIsActive(false)
     },
   })
 
