@@ -33,11 +33,11 @@ const inputError = styled.p`
   color: ${(props) => props.theme.colors.error.bg};
 `
 
-const modalContainer = styled(motion.div)`
+const modalContainer = styled.div`
   position: absolute;
   inset: 0;
+  background-color: transparent;
   z-index: 999999;
-  background-color: ${(props) => props.theme.colors.bgRegular};
 `
 
 const modal = styled(motion.form)`
@@ -61,10 +61,15 @@ const modalButton = styled.button`
   padding: 0.55em 0.75em;
   font-size: 0.875rem;
   border-radius: 5px;
+  width: 3.125rem;
+  min-height: 2.1875rem;
   background-color: ${(props) => props.theme.colors.primary};
   align-self: flex-end;
   transition: all 0.2s ease;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: ${(props) => props.theme.colors.primaryHover};

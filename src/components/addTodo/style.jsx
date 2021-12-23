@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const inputContainer = styled.div`
+const container = styled.form`
+  display: flex;
+  gap: 10px;
   position: relative;
+  margin-bottom: 10px;
 `
 
 const input = styled.input`
@@ -16,6 +18,7 @@ const input = styled.input`
   border-radius: 5px;
   background-color: transparent;
   color: ${(props) => props.theme.colors.textRegular};
+  font-size: 0.875rem;
 
   &:focus,
   &:active {
@@ -32,37 +35,15 @@ const inputError = styled.p`
   font-size: 0.75rem;
   color: ${(props) => props.theme.colors.error.bg};
 `
-
-const modalContainer = styled(motion.div)`
-  position: absolute;
-  inset: 0;
-  z-index: 999999;
-  background-color: ${(props) => props.theme.colors.bgRegular};
-`
-
-const modal = styled(motion.form)`
-  background-color: ${(props) => props.theme.colors.bgModal};
-  border-radius: 5px;
-  padding: 1em;
+const button = styled.button`
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  width: min(350px, 100%);
-  margin-inline: auto;
-  margin-top: 2em;
-  color: ${(props) => props.theme.colors.textRegular};
-`
-
-const modalTitle = styled.h3`
-  font-weight: 600;
-`
-const modalButton = styled.button`
-  padding: 0.55em 0.75em;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
   font-size: 0.875rem;
   border-radius: 5px;
   background-color: ${(props) => props.theme.colors.primary};
-  align-self: flex-end;
+  color: ${(props) => props.theme.colors.textRegular};
   transition: all 0.2s ease;
   cursor: pointer;
 
@@ -70,15 +51,11 @@ const modalButton = styled.button`
     background-color: ${(props) => props.theme.colors.primaryHover};
   }
 `
-
 const s = {
-  inputContainer,
+  container,
   input,
   inputError,
-  modalContainer,
-  modal,
-  modalTitle,
-  modalButton,
+  button,
 }
 
 export default s

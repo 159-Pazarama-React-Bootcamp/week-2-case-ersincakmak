@@ -8,6 +8,7 @@ const header = styled.div`
   align-items: center;
   gap: 20px;
   color: ${(props) => props.theme.colors.textRegular};
+  transition: background 0.2s ease, color 0.2s ease;
 `
 const s = {
   header,

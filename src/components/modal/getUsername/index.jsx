@@ -22,7 +22,11 @@ const GetUsername = ({ isActive, setUserName }) => {
   return (
     <AnimatePresence>
       {isActive && (
-        <s.modalContainer>
+        <s.modalContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <s.modal
             onSubmit={formik.handleSubmit}
             initial={{ opacity: 0, y: -200 }}
@@ -40,12 +44,15 @@ const GetUsername = ({ isActive, setUserName }) => {
                 value={formik.values.username}
                 placeholder="Your name"
                 error={formik.touched.username && formik.errors.username}
+                tabIndex={1}
               />
               {formik.touched.username && formik.errors.username ? (
                 <s.inputError>{formik.errors.username}</s.inputError>
               ) : null}
             </s.inputContainer>
-            <s.modalButton type="submit">Save</s.modalButton>
+            <s.modalButton type="submit" tabIndex={2}>
+              Save
+            </s.modalButton>
           </s.modal>
         </s.modalContainer>
       )}

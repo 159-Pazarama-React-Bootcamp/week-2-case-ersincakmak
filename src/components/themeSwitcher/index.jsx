@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GiMoonBats } from 'react-icons/gi'
-import UserContext from '../../context/userContext'
+import { UserContext } from '../../context/userContext'
 import darkTheme from '../../themes/darkTheme'
 import lightTheme from '../../themes/lightTheme'
 import s from './style'
