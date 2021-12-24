@@ -44,6 +44,7 @@ const GetUsername = ({ isActive, setUserName }) => {
                 value={formik.values.username}
                 placeholder="Your name"
                 error={formik.touched.username && formik.errors.username}
+                autoComplete="off"
                 tabIndex={1}
               />
               {formik.touched.username && formik.errors.username ? (
