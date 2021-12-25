@@ -30,10 +30,14 @@ const EditTodo = ({ todo, setIsEditing, isEditing }) => {
     }),
     onSubmit: async (values) => {
       setLoading(true)
-      const { data } = await todoApi.put(`todos/${todo.id}`, {
-        content: values.content,
-      })
-      setTodos((ex) => ex.map((item) => (item.id === data.id ? data : item)))
+      try {
+        const { data } = await todoApi.put(`todos/${todo.id}`, {
+          content: values.content,
+        })
+        setTodos((ex) => ex.map((item) => (item.id === data.id ? data : item)))
+      } catch (error) {
+        console.log(error)
+      }
       setLoading(false)
       setIsEditing(false)
     },

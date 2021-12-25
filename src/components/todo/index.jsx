@@ -16,22 +16,29 @@ const Todo = ({ todo }) => {
 
   const toggleCompleted = async () => {
     setLoading(true)
-    const { data } = await todoApi.put(`todos/${todo.id}`, {
-      isCompleted: !todo.isCompleted,
-    })
-    setTodos((ex) => ex.map((item) => (item.id === data.id ? data : item)))
+    try {
+      const { data } = await todoApi.put(`todos/${todo.id}`, {
+        isCompleted: !todo.isCompleted,
+      })
+      setTodos((ex) => ex.map((item) => (item.id === data.id ? data : item)))
+    } catch (error) {
+      console.log(error)
+    }
     setLoading(false)
   }
 
   const deleteTodo = async () => {
     setLoading(true)
-    await todoApi.delete(`todos/${todo.id}`)
-    const todoIndex = todos.indexOf(todo)
-
-    setTodos([
-      ...todos.slice(0, todoIndex),
-      ...todos.slice(todoIndex + 1, todos.length),
-    ])
+    try {
+      await todoApi.delete(`todos/${todo.id}`)
+      const todoIndex = todos.indexOf(todo)
+      setTodos([
+        ...todos.slice(0, todoIndex),
+        ...todos.slice(todoIndex + 1, todos.length),
+      ])
+    } catch (error) {
+      console.log(error)
+    }
     setLoading(false)
   }
 

@@ -22,11 +22,15 @@ const AddTodo = () => {
     }),
     onSubmit: async (values, formikHelpers) => {
       setLoading(true)
-      const { data } = await todoApi.post('todos', {
-        content: values.content.trim(),
-      })
-      setTodos((ex) => [...ex, data])
-      formikHelpers.resetForm()
+      try {
+        const { data } = await todoApi.post('todos', {
+          content: values.content.trim(),
+        })
+        setTodos((ex) => [...ex, data])
+        formikHelpers.resetForm()
+      } catch (error) {
+        console.log(error)
+      }
       setLoading(false)
     },
   })
