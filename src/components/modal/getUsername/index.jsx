@@ -1,10 +1,13 @@
 import { useFormik } from 'formik'
 import { AnimatePresence } from 'framer-motion'
-import React from 'react'
+import React, { useContext } from 'react'
 import * as Yup from 'yup'
+import { UserContext } from '../../../context/userContext'
 import s from './style'
 
-const GetUsername = ({ isActive, setUserName }) => {
+const GetUsername = () => {
+  const { setUsername, username } = useContext(UserContext)
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -15,13 +18,13 @@ const GetUsername = ({ isActive, setUserName }) => {
         .required('Required'),
     }),
     onSubmit: (values) => {
-      setUserName(values.username)
+      setUsername(values.username)
     },
   })
 
   return (
     <AnimatePresence>
-      {isActive && (
+      {(!username || username === 'null') && (
         <s.modalContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
